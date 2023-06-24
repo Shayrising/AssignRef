@@ -1,0 +1,50 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestions_Select_ById]    Script Date: 6/23/2023 5:41:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 05/15/2023
+-- Description:	Select a question from [dbo].[TestQuestions] by Id
+
+-- Code Reviewer: Edgar Melano
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestions_Select_ById]
+                  @Id int
+
+as
+/* --------TEST CODE---------
+
+	DECLARE @Id int = 273
+
+	EXECUTE [dbo].[TestQuestions_Select_ById]
+				@Id
+*/
+
+BEGIN
+
+	SELECT [Id]
+		  ,[Question]
+		  ,[HelpText]
+		  ,[IsRequired]
+		  ,[IsMultipleAllowed]
+		  ,[QuestionTypeId]
+		  ,[TestId]
+		  ,[StatusId]
+		  ,[SortOrder]
+
+	FROM [dbo].[TestQuestions]
+
+	WHERE Id = @Id
+
+END
