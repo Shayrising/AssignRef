@@ -1,0 +1,126 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestions_Insert_V2]    Script Date: 6/23/2023 7:28:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description:Insert into dbo.TestQuestions_Insert_V2
+-- Code Reviewer: Alejandro Soto
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestions_Insert_V2]
+					@UserId int
+					,@Question nvarchar(500)
+					,@HelpText nvarchar(255)
+					,@IsRequired bit
+					,@IsMultipleAllowed bit
+					,@QuestionTypeId int
+					,@TestId int
+					,@StatusId int
+					,@SortOrder int
+					,@AnswerOptions_Batch dbo.AnswerOptions_Batch READONLY
+					,@Id int OUTPUT
+
+as
+/*--------TEST CODE----------
+
+	Declare @AnswerOptions_Batch dbo.AnswerOptions_Batch
+
+	Insert into @AnswerOptions_Batch 
+		( Text, Value, AdditionalInfo, IsCorrect)
+	Values
+		('Option 22 SQL', NULL, NULL, 'False'), 
+		('Option 33 SQL', NULL, 'SQL', 'True')
+
+	Declare @Id int = 0;
+
+	Declare	 @UserId int = 6
+					,@Question nvarchar(500) = 'Question 1 SQL'
+					,@HelpText nvarchar(255) = 'HelpText 1 SQL'
+					,@IsRequired bit = 'true'
+					,@IsMultipleAllowed bit = 'false'
+					,@QuestionTypeId int = 1
+					,@TestId int = 1
+					,@StatusId int = 1
+					,@SortOrder int = 1
+
+	Execute dbo.TestQuestions_Insert_V2
+					@UserId
+					,@Question
+					,@HelpText
+					,@IsRequired
+					,@IsMultipleAllowed
+					,@QuestionTypeId
+					,@TestId
+					,@StatusId
+					,@SortOrder
+					,@AnswerOptions_Batch
+					,@Id OUTPUT
+*/
+
+BEGIN
+
+	BEGIN TRY
+		BEGIN TRANSACTION
+
+		INSERT INTO [dbo].[TestQuestions]
+				([UserId]
+				,[Question]
+				,[HelpText]
+				,[IsRequired]
+				,[IsMultipleAllowed]
+				,[QuestionTypeId]
+				,[TestId]
+				,[StatusId]
+				,[SortOrder])
+		   VALUES
+				(@UserId
+				,@Question
+				,@HelpText
+				,@IsRequired
+				,@IsMultipleAllowed
+				,@QuestionTypeId
+				,@TestId
+				,@StatusId
+				,@SortOrder)
+
+		   SET @Id = SCOPE_IDENTITY()
+
+		INSERT INTO [dbo].[TestQuestionAnswerOptions]
+							( [QuestionId]
+							 ,[Text]
+							 ,[Value]
+							 ,[AdditionalInfo]
+							 ,[CreatedBy]
+							 ,[IsCorrect])
+					SELECT @Id
+						  ,b.[Text]
+						  ,b.[Value]
+						  ,b.[AdditionalInfo]
+						  ,@UserId
+						  ,b.[IsCorrect]
+					FROM  @AnswerOptions_Batch AS b
+
+		COMMIT TRANSACTION;
+	
+	END TRY
+	BEGIN CATCH
+			
+				IF @@TRANCOUNT > 0 ROLLBACK
+					DECLARE @MSG nvarchar(2048) = ERROR_MESSAGE()
+					RAISERROR (@MSG,16,1)
+				ROLLBACK;
+	END CATCH
+
+END
