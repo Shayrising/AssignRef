@@ -1,0 +1,68 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestionAnswerOptions_Update]    Script Date: 6/23/2023 7:11:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description: Update dbo.TestQuestionAnswerOptions
+
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestionAnswerOptions_Update]
+				    @QuestionId int
+					,@Text nvarchar(500)
+					,@Value nvarchar(100)
+					,@AdditionalInfo nvarchar(200)
+					,@CreatedBy int
+					,@IsCorrect bit
+					,@Id int
+
+as
+/*----------TEST CODE------------
+	Declare			@QuestionId int = 7
+					,@Text nvarchar(500) = 'Option 2'
+					,@Value nvarchar(100) = 'Value 2'
+					,@AdditionalInfo nvarchar(200) = 'Info 2'
+					,@CreatedBy int = 2
+					,@IsCorrect bit= 'true'
+					,@Id int = 10
+
+	Execute dbo.TestQuestionAnswerOptions_Update
+					@QuestionId
+					,@Text
+					,@Value
+					,@AdditionalInfo
+					,@CreatedBy
+					,@IsCorrect
+					,@Id
+*/
+
+BEGIN
+
+	Declare @DateNow datetime2 = getutcdate()
+
+	UPDATE [dbo].[TestQuestionAnswerOptions]
+      
+	SET		[QuestionId] = @QuestionId
+           ,[Text] = @Text
+           ,[Value] = @Value
+           ,[AdditionalInfo] = @AdditionalInfo
+           ,[CreatedBy] = @CreatedBy
+		   ,[IsCorrect] = @IsCorrect
+		   ,[DateModified] = @DateNow
+
+	 WHERE Id = @Id
+
+END
