@@ -1,7 +1,7 @@
-﻿using Sabio.Models.Requests.TestQuestionAnswerOptions;
-using Sabio.Models.Requests.TestQuestions;
+﻿using AssignRef.Models.Requests.TestQuestionAnswerOptions;
+using AssignRef.Models.Requests.TestQuestions;
 
-namespace Sabio.Services.Interfaces
+namespace AssignRef.Services.Interfaces
 {
     public interface ITestQuestionAnswerOptionService
     {
