@@ -1,6 +1,6 @@
-AssignRef is a platform that allows game official's of the Liga de Fútbol Americano Profesional (LFA) to be assigned games, graded based on their performance, tested on their knowledge, and compensated for their work. AssignRef is an MVP and due to the proprietary nature of the code I can only provide code snippets of my code. This repository contains SQL, .NET, and React code for the test builder feature. 
+**AssignRef is a platform that allows game official's of the Liga de Fútbol Americano Profesional (LFA) to be assigned games, graded based on their performance, tested on their knowledge, and compensated for their work. AssignRef is an MVP and due to the proprietary nature of the code I can only provide code snippets of my code. This repository contains SQL, .NET, and React code for the test builder feature.**
 
-My role as a software engineer was to implement the functionality of the test builder. I was required to handle all the coding from the backend to the frontend. Below is a list of the actions I took to accomplish my responsibilities.
+**My role as a software engineer was to implement the functionality of the test builder. I was required to handle all the coding from the backend to the frontend. Below is a list of the actions I took to accomplish my responsibilities.**
 
 • Designed a test builder form that allows platform administration to quickly and efficiently add
 test questions and their corresponding answers to the database in order to test their officials.
