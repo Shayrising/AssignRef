@@ -1,0 +1,73 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestions_Update]    Script Date: 6/23/2023 7:37:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/11/2023
+-- Description:Update dbo.TestQuestions
+
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestions_Update]
+					@Question nvarchar(500)
+					,@HelpText nvarchar(255)
+					,@IsRequired bit
+					,@IsMultipleAllowed bit
+					,@QuestionTypeId int
+					,@StatusId int
+					,@SortOrder int
+					,@Id int
+
+as
+/*--------TEST CODE----------
+
+	Declare			@Question nvarchar(500) = 'Question 3'
+					,@HelpText nvarchar(255) = 'HelpText 2'
+					,@IsRequired bit = 'true'
+					,@IsMultipleAllowed bit = 'false'
+					,@QuestionTypeId int = 2
+					,@StatusId int = 2
+					,@SortOrder int = 4
+					,@Id int = 273
+
+	Execute dbo.TestQuestions_Update
+					@Question
+					,@HelpText
+					,@IsRequired
+					,@IsMultipleAllowed
+					,@QuestionTypeId
+					,@StatusId
+					,@SortOrder
+					,@Id
+*/
+
+BEGIN
+
+	Declare @DateNow datetime2 = getutcdate()
+
+	UPDATE [dbo].[TestQuestions]
+	
+	SET		[Question] = @Question
+		   ,[HelpText] = @HelpText
+		   ,[IsRequired] = @IsRequired
+		   ,[IsMultipleAllowed] = @IsMultipleAllowed
+		   ,[QuestionTypeId] = @QuestionTypeId
+		   ,[StatusId] = @StatusId
+	       ,[SortOrder] = @SortOrder
+		   ,[DateModified] = @DateNow
+
+	WHERE Id = @Id
+
+END
