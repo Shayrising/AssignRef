@@ -1,0 +1,73 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestionAnswerOptions_Insert]    Script Date: 6/23/2023 2:00:54 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description:Insert into dbo.TestQuestionAnswerOptions
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestionAnswerOptions_Insert]
+				    @QuestionId int
+					,@Text nvarchar(500) = null
+					,@Value nvarchar(100) = null
+					,@AdditionalInfo nvarchar(200) = null
+					,@CreatedBy int
+					,@IsCorrect bit
+					,@Id int OUTPUT
+
+as
+/* --------TEST CODE---------
+
+	Declare @Id int = 0;
+
+	Declare	@QuestionId int = 7
+					,@Text nvarchar(500) = 'Option 1'
+					,@Value nvarchar(100) = 'Value 1'
+					,@AdditionalInfo nvarchar(200) = 'Info 1'
+					,@CreatedBy int = 1
+					,@IsCorrect bit= 'true'
+
+	Execute dbo.TestQuestionAnswerOptions_Insert
+					@QuestionId
+					,@Text
+					,@Value
+					,@AdditionalInfo
+					,@CreatedBy
+					,@IsCorrect
+					,@Id OUTPUT
+*/
+
+BEGIN
+
+INSERT INTO [dbo].[TestQuestionAnswerOptions]
+           ([QuestionId]
+           ,[Text]
+           ,[Value]
+           ,[AdditionalInfo]
+           ,[CreatedBy]
+		       ,[IsCorrect])
+
+	VALUES
+       (@QuestionId
+		   ,@Text
+		   ,@Value
+		   ,@AdditionalInfo
+		   ,@CreatedBy
+		   ,@IsCorrect)
+
+	 SET @Id = SCOPE_IDENTITY()
+
+END
