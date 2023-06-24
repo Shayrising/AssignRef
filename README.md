@@ -4,15 +4,20 @@ My role as a software engineer was to implement the functionality of the test bu
 
 • Designed a test builder form that allows platform administration to quickly and efficiently add
 test questions and their corresponding answers to the database in order to test their officials.
+
 • Generated SQL tables and stored procedures, allowing management of test questions, answers
 and answer option types, establishing optimal data use and availability.
+
 • Implemented data tables and stored procedures within SQL to connect and process the
 requests from the officials to the database, by using joins, foreign-key relationships, and user-defined table types.
+
 • Built domain-models, services, interfaces, and API endpoint controllers in .NET using C# to
 optimize a test builder form, linking the frontend to the backend to create a fully functional
 form.
+
 • Conducted daily code talks, standup meetings and regular peer reviews with fellow developers
 that enhanced the learning environment and improved overall code quality.
+
 • Performed pull requests and multiple successful branch merges through GitHub after
 resolving merge conflicts and collaborated with a product development team using Git and
 GitHub for source control and repo management.
