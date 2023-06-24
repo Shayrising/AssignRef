@@ -4,7 +4,7 @@ import * as questionService from "../../services/questionService";
 import { Formik, Form, Field, FieldArray } from "formik";
 import toastr from "toastr";
 import { Button, Breadcrumb } from "react-bootstrap";
-import debug from "sabio-debug";
+import debug from "assignRef-debug";
 import testBuilderSchema from "schemas/testBuilderSchema";
 import "./testbuilder.css";
 import QuestionCard from "./QuestionCard";
