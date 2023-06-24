@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sabio.Models.Domain.TestQuestions
+namespace AssignRef.Models.Domain.TestQuestions
 {
     public class TestQuestion
     {
-
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Question { get; set; }
