@@ -1,0 +1,42 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestionAnswerOptions_Delete_ById]    Script Date: 6/23/2023 6:58:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description:	Delete record from dbo.TestQuestionAnswerOptions
+--			    By the Id
+ 
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestionAnswerOptions_Delete_ById]
+					@Id int 
+
+as
+/*----------TEST CODE------------
+
+	Declare @Id int = 10
+
+	Execute dbo.TestQuestionAnswerOptions_Delete_ById
+				@Id
+
+*/
+
+BEGIN
+
+			DELETE from dbo.TestQuestionAnswerOptions
+			WHERE Id = @Id
+
+END
