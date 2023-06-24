@@ -1,0 +1,11 @@
+USE [AssignRef]
+GO
+
+/****** Object:  UserDefinedTableType [dbo].[AnswerOptions_Batch]    Script Date: 6/23/2023 7:45:38 PM ******/
+CREATE TYPE [dbo].[AnswerOptions_Batch] AS TABLE(
+	[Text] [nvarchar](500) NULL,
+	[Value] [nvarchar](100) NULL,
+	[AdditionalInfo] [nvarchar](200) NULL,
+	[IsCorrect] [bit] NULL
+)
+GO
