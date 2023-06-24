@@ -1,0 +1,45 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestions_Delete_ById]    Script Date: 6/23/2023 7:28:22 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/11/2023
+-- Description:	Soft Delete record from dbo.TestQuestions
+--			    Changing status to inactive
+
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestions_Delete_ById]
+						@Id int
+
+as
+/*--------TEST CODE----------
+
+	Declare @Id int = 8
+
+	Execute dbo.TestQuestions_Delete_ById
+				@Id
+
+*/
+
+BEGIN
+
+		UPDATE [dbo].[TestQuestions]
+
+		SET StatusId = 2
+
+		WHERE Id = @Id
+
+END
