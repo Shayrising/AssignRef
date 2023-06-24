@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sabio.Models.Domain.TestQuestionAnswerOptions
+namespace AssignRef.Models.Domain.TestQuestionAnswerOptions
 {
     public class TestQuestionAnswerOption
     {
