@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sabio.Models.Requests.TestQuestions
+namespace AssignRef.Models.Requests.TestQuestions
 {
     public class TestQuestionsUpdateRequest : TestQuestionRequestBase, IModelIdentifier
     {
