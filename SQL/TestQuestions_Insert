@@ -1,0 +1,89 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestions_Insert]    Script Date: 6/23/2023 7:28:28 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description:Insert into dbo.TestQuestions_Insert
+
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestions_Insert]
+					@UserId int
+					,@Question nvarchar(500)
+					,@HelpText nvarchar(255)
+					,@IsRequired bit
+					,@IsMultipleAllowed bit
+					,@QuestionTypeId int
+					,@TestId int
+					,@StatusId int
+					,@SortOrder int
+					,@Id int OUTPUT
+
+as
+/*--------TEST CODE----------
+
+	Declare @Id int = 0;
+
+	Declare			@UserId int = 6
+					,@Question nvarchar(500) = 'Question 1'
+					,@HelpText nvarchar(255) = 'HelpText 1'
+					,@IsRequired bit = 'true'
+					,@IsMultipleAllowed bit = 'false'
+					,@QuestionTypeId int = 1
+					,@TestId int = 1
+					,@StatusId int = 1
+					,@SortOrder int = 1
+
+	Execute dbo.TestQuestions_Insert
+					@UserId
+					,@Question
+					,@HelpText
+					,@IsRequired
+					,@IsMultipleAllowed
+					,@QuestionTypeId
+					,@TestId
+					,@StatusId
+					,@SortOrder
+					,@Id OUTPUT
+*/
+
+BEGIN
+
+	INSERT INTO [dbo].[TestQuestions]
+				([UserId]
+				,[Question]
+				,[HelpText]
+				,[IsRequired]
+				,[IsMultipleAllowed]
+				,[QuestionTypeId]
+				,[TestId]
+				,[StatusId]
+				,[SortOrder])
+
+	VALUES
+				(@UserId
+				,@Question
+				,@HelpText
+				,@IsRequired
+				,@IsMultipleAllowed
+				,@QuestionTypeId
+				,@TestId
+				,@StatusId
+				,@SortOrder)
+
+	SET @Id = SCOPE_IDENTITY()
+
+END
