@@ -1,0 +1,50 @@
+USE [AssignRef]
+GO
+/****** Object:  StoredProcedure [dbo].[TestQuestionAnswerOptions_GetById]    Script Date: 6/23/2023 2:00:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Shannon Rising
+-- Create date: 4/10/2023
+-- Description:Insert into dbo.TestQuestionAnswerOptions
+
+-- Code Reviewer: Kaitlyn Walton
+
+-- MODIFIED BY: 
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note:
+--
+-- =============================================
+
+ALTER proc [dbo].[TestQuestionAnswerOptions_GetById]
+						@Id int
+
+as 
+
+/* --------TEST CODE---------
+
+	DECLARE @Id int = 273
+
+	EXECUTE [dbo].[TestQuestionAnswerOptions_GetById]
+				@Id
+*/
+
+BEGIN
+
+Select tqa.[Text]
+	  ,tqa.[Id]
+	  ,tqa.[QuestionId]
+	  ,tqa.[Value]
+	  ,tqa.[AdditionalInfo]
+	  ,tqa.[IsCorrect]
+
+From [dbo].[TestQuestionAnswerOptions] as tqa
+inner join [dbo].[TestQuestions] as tq on tqa.QuestionId = tq.Id
+
+Where tq.Id = @Id
+
+END
